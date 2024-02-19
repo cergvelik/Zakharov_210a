@@ -26,7 +26,7 @@ namespace Labor1
         /// <param name="UnitId"> Номер установки, которой принадлежит резервуар</param>
         public Tank() { }//конструктор по умолчанию
 
-        public Tank(int Id, string Name, string Description, int Volume, int MaxVolume, int UnitId)
+        public Tank(int Id, string Name, string Description, int Volume, int MaxVolume, int UnitId)//конструктор с параметрами
         {
             this.Id = Id;
             this.Name = Name;
