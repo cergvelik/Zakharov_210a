@@ -21,7 +21,7 @@ namespace Labor1
 
             PrintAllTanks(tanks,units,factories);//вывод всех резервуаров
 
-            var TheFactories = new List<Factory> //создание коллекций для 6 задания
+            var TheFactories = new List<Factory> //создание коллекций для 6 задания (без использования конструктора)
             {
             new (){ Id=1, Name="НПЗ№1", Description="Первый нефтеперерабатывающий завод"},
             new (){ Id=2, Name="НПЗ№2", Description = "Второй нефтеперерабатывающий завод"}
@@ -44,7 +44,6 @@ namespace Labor1
             new (){ Id=6, Name="Резервуар 256", Description="Подводный", Volume=500, MaxVolume=500, UnitId=3}
             };
 
-
             int choice=0; //переменная для switch case
             Console.WriteLine("Что вы хотите найти: 1-завод, 2-установку, 3-резервуар");
             if (!int.TryParse(Console.ReadLine(), out choice) | choice<1 | choice>3) { Console.WriteLine("Ошибка"); return 0; } // Считывание информации с клавиатуры
@@ -52,6 +51,7 @@ namespace Labor1
             Console.WriteLine("Введите наименование объекта:");
             string? input=Console.ReadLine();// Считывание информации с клавиатуры
 
+            
             if (!string.IsNullOrEmpty(input))// Проверка не введена ли пустая строка
             {
                 switch (choice)
@@ -80,7 +80,6 @@ namespace Labor1
             return 1;
         }
 
-
         // реализуйте этот метод, чтобы он возвращал массив резервуаров, согласно приложенным таблицам
         // можно использовать создание объектов прямо в C# коде через new, или читать из файла (на своё усмотрение)
         public static Tank[] GetTanks()
@@ -91,8 +90,7 @@ namespace Labor1
                 string text = File.ReadLines("tanks.txt").ElementAt(i);//файл находится в bin/Debug/net6.0
                 //проходимся по файлу построчно
                 string[] mystring = text.Split(',');//делим строку
-                tanks[i] = new Tank() { Id = int.Parse(mystring[0]), Name = mystring[1], Description = mystring[2], Volume = int.Parse(mystring[3]),
-                MaxVolume = int.Parse(mystring[4]), UnitId = int.Parse(mystring[5]) };
+                tanks[i] = new Tank(int.Parse(mystring[0]), mystring[1], mystring[2], int.Parse(mystring[3]), int.Parse(mystring[4]), int.Parse(mystring[5]));//при создании объекта класса используем конструктор с параметрами
             }
             return tanks;
         }
@@ -106,7 +104,7 @@ namespace Labor1
                 string text = File.ReadLines("units.txt").ElementAt(i);//файл находится в bin/Debug/net6.0
                 //проходимся по файлу построчно
                 string[] mystring = text.Split(',');//делим строку
-                units[i] = new Unit() { Id = int.Parse(mystring[0]), Name = mystring[1], Description = mystring[2], FactoryId = int.Parse(mystring[3])};
+                units[i] = new Unit(int.Parse(mystring[0]), mystring[1], mystring[2], int.Parse(mystring[3]));//при создании объекта класса используем конструктор с параметрами
             }
             return units;
         }
@@ -119,7 +117,7 @@ namespace Labor1
                 string text = File.ReadLines("factories.txt").ElementAt(i);//файл находится в bin/Debug/net6.0
                 //проходимся по файлу построчно
                 string[] mystring = text.Split(',');//делим строку
-                factories[i] = new Factory() { Id = int.Parse(mystring[0]), Name = mystring[1], Description = mystring[2] };
+                factories[i] = new Factory(int.Parse(mystring[0]), mystring[1], mystring[2]);//при создании объекта класса используем конструктор с параметрами
             }
             return factories;
         }
