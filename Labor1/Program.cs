@@ -21,7 +21,7 @@ namespace Labor1
 
             PrintAllTanks(tanks,units,factories);//вывод всех резервуаров
 
-            var TheFactories = new List<Factory> //создание коллекций для 6 задания (без использования конструктора)
+            var TheFactories = new List<Factory> //создание коллекций для 6 задания (без использования конструктора с параметрами)
             {
             new (){ Id=1, Name="НПЗ№1", Description="Первый нефтеперерабатывающий завод"},
             new (){ Id=2, Name="НПЗ№2", Description = "Второй нефтеперерабатывающий завод"}
